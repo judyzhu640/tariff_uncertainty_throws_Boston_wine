@@ -1,0 +1,57 @@
+#Tariff uncertainty throws Boston wine importers into planning confusion
+By Ziyue Zhu
+
+This repository documents the reporting and data analysis behind my story  
+
+The project combines interview reporting with port-level import data to show how shifting tariff signals, rather than a single policy change disrupted the timing of wine shipments into Boston in 2025.
+
+---
+
+## Story context
+
+In early 2025, president Donald Trump repeatedly floated and then adjusted potential tariffs on wine imports from the European Union.  
+
+Boston wine importers and distributors told me that the uncertainty itself made it difficult to plan: suppliers delayed shipments, and importers hesitated to place new orders.
+
+Port of Boston import records show that this policy uncertainty coincided with an unusual break in the typical seasonal pattern of wine imports:
+- May 2025 saw a sharp drop compared with both April and recent years.
+- June 2025 showed a rebound that reversed the typical seasonal slowdown.
+
+This repo reconstructs that pattern step by step.
+
+---
+
+## Data sources
+
+- **Port of Boston wine import data (2022–2025)**  
+  - Source: U.S. Census Bureau / USA Trade Online  
+  - Product: Wine (HS code 2204 / 220421, etc., depending on query)  
+  - Geography: Port of Boston  
+  - Metric: Monthly import weight (kilograms)
+
+- **Industry interviews**
+  - Boston-based wine retailer and buyer (store manager)
+  - Wine and spirits sales representative at a major distributor (Martignetti Companies)  
+  - These interviews are not included in full here, but selected quotes appear in the story.
+
+---
+
+## Repository structure
+
+```text
+data/
+  raw/
+    port_imports_boston_raw.csv        # Original monthly import data as downloaded
+  processed/
+    boston_wine_imports_2022_2024.csv  # Cleaned monthly series for comparison years
+    boston_wine_imports_2025.csv       # Cleaned 2025 monthly series
+
+scripts/
+  clean_boston_wine_imports.ipynb      # Notebook for cleaning and aggregating imports
+
+charts/
+  monthly_imports_2022_2024.png        # Line chart: typical seasonal pattern
+  monthly_imports_2025.png             # Line chart: 2025 pattern with May drop & June rebound
+
+story/
+  tariff_uncertainty_boston_wine.md    # Final story text (for portfolio use)
